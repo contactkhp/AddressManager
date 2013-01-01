@@ -1,0 +1,206 @@
+﻿@model BAPSLansdaleAddressManager.Models.Person
+
+@{
+    ViewBag.Title = "EditPerson";
+}
+
+<h2>Edit Guest Information</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.focus :input').focus();
+    });
+</script>
+
+
+@*Use JQuery UI to display DateTimePicker control for DateOfBirth field*@
+<script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Guest Details</legend>
+        @Html.HiddenFor(model => model.PersonID)
+        @Html.HiddenFor(model => model.AddressId)
+        @Html.HiddenFor(model => model.Address.AddressId)
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName, "First")
+        </div>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MiddleName, "Middle")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MiddleName)
+            @Html.ValidationMessageFor(model => model.MiddleName)
+        </div>
+        
+        
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName, "Last")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Gender)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Gender)
+            @Html.ValidationMessageFor(model => model.Gender)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateOfBirth, "Birth Date")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateOfBirth)
+            @Html.ValidationMessageFor(model => model.DateOfBirth)
+        </div>
+    </fieldset> 
+
+    <fieldset>
+        <legend>Contact Details</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address.StreetNo, "Street No")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address.StreetNo)
+            @Html.ValidationMessageFor(model => model.Address.StreetNo)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address.Address1, "Street Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address.Address1)
+            @Html.ValidationMessageFor(model => model.Address.Address1)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address.ApartmentNo, "Apartment No")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address.ApartmentNo)
+            @Html.ValidationMessageFor(model => model.Address.ApartmentNo)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address.CityId, "City")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CityId", String.Empty)
+            @Html.ValidationMessageFor(model => model.Address.CityId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address.CityName.State, "State")
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Address.CityName.State)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address.Zip)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address.Zip)
+            @Html.ValidationMessageFor(model => model.Address.Zip)
+        </div>
+        <div class="editor-label">
+            <div style="float: left;">
+                @{
+                    var isBadAddress = Model.IsBadAddress != null && (bool) Model.IsBadAddress;
+                    @Html.CheckBoxFor(model => isBadAddress)
+                }
+            </div>
+            @Html.LabelFor(model => model.IsBadAddress, "Invalid Address")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HomePhone, "Home Phone")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HomePhone)
+            @Html.ValidationMessageFor(model => model.HomePhone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CellPhone, "Cell Phone")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CellPhone)
+            @Html.ValidationMessageFor(model => model.CellPhone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+    </fieldset>
+    
+    <fieldset>
+        <legend>Other Details</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryId, "Category")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CategoryId", String.Empty)
+            @Html.ValidationMessageFor(model => model.CategoryId)
+        </div>
+        <div class="editor-label">
+            <div style="float: left;">
+                @{
+                    var active = Model.Active != null && (bool) Model.Active;
+                    @Html.CheckBoxFor(model => active)
+                }
+            </div>
+            @Html.LabelFor(model => model.Active)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Type)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Type)
+            @Html.ValidationMessageFor(model => model.Type)
+        </div>
+        <div class="editor-label">
+            <div style="float: left;">
+                @{
+                    var considerForSampark= Model.ConsiderForSampark != null && (bool) Model.ConsiderForSampark;
+                    @Html.CheckBoxFor(model => considerForSampark)
+                }
+            </div>
+            @Html.LabelFor(model => model.ConsiderForSampark, "Consider for sampark")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Native)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Native)
+            @Html.ValidationMessageFor(model => model.Native)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Notes)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Notes, 6, 25, null)
+            @Html.ValidationMessageFor(model => model.Notes)
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Guests", "Index", "Person")
+</div>

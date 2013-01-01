@@ -1,0 +1,1006 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BAPSLansdaleModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="BAPSLansdaleModelStoreContainer">
+          <EntitySet Name="Addresses" EntityType="BAPSLansdaleModel.Store.Addresses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Categories" EntityType="BAPSLansdaleModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CityNames" EntityType="BAPSLansdaleModel.Store.CityNames" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EventFlags" EntityType="BAPSLansdaleModel.Store.EventFlags" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PersonEventFlags" EntityType="BAPSLansdaleModel.Store.PersonEventFlags" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PersonRelationships" EntityType="BAPSLansdaleModel.Store.PersonRelationships" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Persons" EntityType="BAPSLansdaleModel.Store.Persons" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RelationshipTypes" EntityType="BAPSLansdaleModel.Store.RelationshipTypes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Roles" EntityType="BAPSLansdaleModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="BAPSLansdaleModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ZoneCities" EntityType="BAPSLansdaleModel.Store.ZoneCities" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ZoneKaryakar" EntityType="BAPSLansdaleModel.Store.ZoneKaryakar" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Zones" EntityType="BAPSLansdaleModel.Store.Zones" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Addresses_CityId" Association="BAPSLansdaleModel.Store.FK_Addresses_CityId">
+            <End Role="CityNames" EntitySet="CityNames" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonEventFlags_EventFlagId" Association="BAPSLansdaleModel.Store.FK_PersonEventFlags_EventFlagId">
+            <End Role="EventFlags" EntitySet="EventFlags" />
+            <End Role="PersonEventFlags" EntitySet="PersonEventFlags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonEventFlags_PersonId" Association="BAPSLansdaleModel.Store.FK_PersonEventFlags_PersonId">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="PersonEventFlags" EntitySet="PersonEventFlags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonRelationShips_PersonId" Association="BAPSLansdaleModel.Store.FK_PersonRelationShips_PersonId">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="PersonRelationships" EntitySet="PersonRelationships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonRelationShips_RelatedPersonId" Association="BAPSLansdaleModel.Store.FK_PersonRelationShips_RelatedPersonId">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="PersonRelationships" EntitySet="PersonRelationships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonRelationShips_RelationshipTypeID" Association="BAPSLansdaleModel.Store.FK_PersonRelationShips_RelationshipTypeID">
+            <End Role="RelationshipTypes" EntitySet="RelationshipTypes" />
+            <End Role="PersonRelationships" EntitySet="PersonRelationships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_AddressID" Association="BAPSLansdaleModel.Store.FK_Persons_AddressID">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_CategoryId" Association="BAPSLansdaleModel.Store.FK_Persons_CategoryId">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_RoleId" Association="BAPSLansdaleModel.Store.FK_Users_RoleId">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zonecities_CityNames" Association="BAPSLansdaleModel.Store.FK_zonecities_CityNames">
+            <End Role="CityNames" EntitySet="CityNames" />
+            <End Role="ZoneCities" EntitySet="ZoneCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zonecities_zones" Association="BAPSLansdaleModel.Store.FK_zonecities_zones">
+            <End Role="Zones" EntitySet="Zones" />
+            <End Role="ZoneCities" EntitySet="ZoneCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZoneKaryakar_AddressID" Association="BAPSLansdaleModel.Store.FK_ZoneKaryakar_AddressID">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="ZoneKaryakar" EntitySet="ZoneKaryakar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZoneKaryakar_zones" Association="BAPSLansdaleModel.Store.FK_ZoneKaryakar_zones">
+            <End Role="Zones" EntitySet="Zones" />
+            <End Role="ZoneKaryakar" EntitySet="ZoneKaryakar" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StreetNo" Type="nvarchar" MaxLength="25" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="ApartmentNo" Type="nvarchar" MaxLength="25" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="State" Type="nchar" MaxLength="10" />
+          <Property Name="Zip" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="CityNames">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="EventFlags">
+          <Key>
+            <PropertyRef Name="EventFlagID" />
+          </Key>
+          <Property Name="EventFlagID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FlagName" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PersonEventFlags">
+          <Key>
+            <PropertyRef Name="PersonEventFlagID" />
+          </Key>
+          <Property Name="PersonEventFlagID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="EventFlagID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonRelationships">
+          <Key>
+            <PropertyRef Name="PersonID" />
+            <PropertyRef Name="RelatedPersonID" />
+          </Key>
+          <Property Name="PersonID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RelatedPersonID" Type="int" Nullable="false" />
+          <Property Name="RelationshipTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persons">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="IsBadAddress" Type="bit" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Gender" Type="nchar" MaxLength="1" />
+          <Property Name="IsKarykar" Type="bit" />
+          <Property Name="AddressId" Type="int" Nullable="false" />
+          <Property Name="HomePhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="CellPhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Native" Type="nvarchar" MaxLength="255" />
+          <Property Name="Type" Type="nvarchar" MaxLength="20" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="KarykarId" Type="int" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="OldPhoneNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="ConsiderForSampark" Type="bit" />
+        </EntityType>
+        <EntityType Name="RelationshipTypes">
+          <Key>
+            <PropertyRef Name="RelationshipTypeID" />
+          </Key>
+          <Property Name="RelationshipTypeID" Type="int" Nullable="false" />
+          <Property Name="RelationshipType" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="NeedsPasswordChange" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZoneCities">
+          <Key>
+            <PropertyRef Name="ZoneCityId" />
+          </Key>
+          <Property Name="ZoneCityId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ZoneId" Type="int" />
+          <Property Name="CityName" Type="varchar" MaxLength="20" />
+          <Property Name="CityId" Type="int" />
+        </EntityType>
+        <EntityType Name="ZoneKaryakar">
+          <Key>
+            <PropertyRef Name="ZoneKarykarId" />
+          </Key>
+          <Property Name="ZoneKarykarId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ZoneId" Type="int" />
+          <Property Name="AddressId" Type="int" />
+          <Property Name="Notes" Type="varchar" MaxLength="6000" />
+          <Property Name="Note1" Type="varchar" MaxLength="6000" />
+          <Property Name="Note2" Type="varchar" MaxLength="6000" />
+          <Property Name="Note3" Type="varchar" MaxLength="6000" />
+        </EntityType>
+        <EntityType Name="Zones">
+          <Key>
+            <PropertyRef Name="ZoneId" />
+          </Key>
+          <Property Name="ZoneId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ZoneName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ZoneLeadId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Addresses_CityId">
+          <End Role="CityNames" Type="BAPSLansdaleModel.Store.CityNames" Multiplicity="0..1" />
+          <End Role="Addresses" Type="BAPSLansdaleModel.Store.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityNames">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonEventFlags_EventFlagId">
+          <End Role="EventFlags" Type="BAPSLansdaleModel.Store.EventFlags" Multiplicity="1" />
+          <End Role="PersonEventFlags" Type="BAPSLansdaleModel.Store.PersonEventFlags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventFlags">
+              <PropertyRef Name="EventFlagID" />
+            </Principal>
+            <Dependent Role="PersonEventFlags">
+              <PropertyRef Name="EventFlagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonEventFlags_PersonId">
+          <End Role="Persons" Type="BAPSLansdaleModel.Store.Persons" Multiplicity="1" />
+          <End Role="PersonEventFlags" Type="BAPSLansdaleModel.Store.PersonEventFlags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonEventFlags">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonRelationShips_PersonId">
+          <End Role="Persons" Type="BAPSLansdaleModel.Store.Persons" Multiplicity="1" />
+          <End Role="PersonRelationships" Type="BAPSLansdaleModel.Store.PersonRelationships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonRelationships">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonRelationShips_RelatedPersonId">
+          <End Role="Persons" Type="BAPSLansdaleModel.Store.Persons" Multiplicity="1" />
+          <End Role="PersonRelationships" Type="BAPSLansdaleModel.Store.PersonRelationships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonRelationships">
+              <PropertyRef Name="RelatedPersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonRelationShips_RelationshipTypeID">
+          <End Role="RelationshipTypes" Type="BAPSLansdaleModel.Store.RelationshipTypes" Multiplicity="1" />
+          <End Role="PersonRelationships" Type="BAPSLansdaleModel.Store.PersonRelationships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipTypes">
+              <PropertyRef Name="RelationshipTypeID" />
+            </Principal>
+            <Dependent Role="PersonRelationships">
+              <PropertyRef Name="RelationshipTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_AddressID">
+          <End Role="Addresses" Type="BAPSLansdaleModel.Store.Addresses" Multiplicity="1" />
+          <End Role="Persons" Type="BAPSLansdaleModel.Store.Persons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_CategoryId">
+          <End Role="Categories" Type="BAPSLansdaleModel.Store.Categories" Multiplicity="0..1" />
+          <End Role="Persons" Type="BAPSLansdaleModel.Store.Persons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_RoleId">
+          <End Role="Roles" Type="BAPSLansdaleModel.Store.Roles" Multiplicity="1" />
+          <End Role="Users" Type="BAPSLansdaleModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zonecities_CityNames">
+          <End Role="CityNames" Type="BAPSLansdaleModel.Store.CityNames" Multiplicity="0..1" />
+          <End Role="ZoneCities" Type="BAPSLansdaleModel.Store.ZoneCities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityNames">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="ZoneCities">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zonecities_zones">
+          <End Role="Zones" Type="BAPSLansdaleModel.Store.Zones" Multiplicity="0..1" />
+          <End Role="ZoneCities" Type="BAPSLansdaleModel.Store.ZoneCities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zones">
+              <PropertyRef Name="ZoneId" />
+            </Principal>
+            <Dependent Role="ZoneCities">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZoneKaryakar_AddressID">
+          <End Role="Addresses" Type="BAPSLansdaleModel.Store.Addresses" Multiplicity="0..1" />
+          <End Role="ZoneKaryakar" Type="BAPSLansdaleModel.Store.ZoneKaryakar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="ZoneKaryakar">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZoneKaryakar_zones">
+          <End Role="Zones" Type="BAPSLansdaleModel.Store.Zones" Multiplicity="0..1" />
+          <End Role="ZoneKaryakar" Type="BAPSLansdaleModel.Store.ZoneKaryakar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zones">
+              <PropertyRef Name="ZoneId" />
+            </Principal>
+            <Dependent Role="ZoneKaryakar">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BAPSLansdaleModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BAPSLansdaleEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="BAPSLansdaleModel.Address" />
+          <EntitySet Name="Categories" EntityType="BAPSLansdaleModel.Category" />
+          <EntitySet Name="CityNames" EntityType="BAPSLansdaleModel.CityName" />
+          <EntitySet Name="EventFlags" EntityType="BAPSLansdaleModel.EventFlag" />
+          <EntitySet Name="PersonEventFlags" EntityType="BAPSLansdaleModel.PersonEventFlag" />
+          <EntitySet Name="PersonRelationships" EntityType="BAPSLansdaleModel.PersonRelationship" />
+          <EntitySet Name="Persons" EntityType="BAPSLansdaleModel.Person" />
+          <EntitySet Name="RelationshipTypes" EntityType="BAPSLansdaleModel.RelationshipType" />
+          <EntitySet Name="Users" EntityType="BAPSLansdaleModel.User" />
+          <EntitySet Name="ZoneCities" EntityType="BAPSLansdaleModel.ZoneCity" />
+          <EntitySet Name="ZoneKaryakars" EntityType="BAPSLansdaleModel.ZoneKaryakar" />
+          <EntitySet Name="Zones" EntityType="BAPSLansdaleModel.Zone" />
+          <AssociationSet Name="FK_Addresses_CityId" Association="BAPSLansdaleModel.FK_Addresses_CityId">
+            <End Role="CityNames" EntitySet="CityNames" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_AddressID" Association="BAPSLansdaleModel.FK_Persons_AddressID">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZoneKaryakar_AddressID" Association="BAPSLansdaleModel.FK_ZoneKaryakar_AddressID">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="ZoneKaryakar" EntitySet="ZoneKaryakars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_CategoryId" Association="BAPSLansdaleModel.FK_Persons_CategoryId">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zonecities_CityNames" Association="BAPSLansdaleModel.FK_zonecities_CityNames">
+            <End Role="CityNames" EntitySet="CityNames" />
+            <End Role="ZoneCities" EntitySet="ZoneCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonEventFlags_EventFlagId" Association="BAPSLansdaleModel.FK_PersonEventFlags_EventFlagId">
+            <End Role="EventFlags" EntitySet="EventFlags" />
+            <End Role="PersonEventFlags" EntitySet="PersonEventFlags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonEventFlags_PersonId" Association="BAPSLansdaleModel.FK_PersonEventFlags_PersonId">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="PersonEventFlags" EntitySet="PersonEventFlags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonRelationShips_PersonId" Association="BAPSLansdaleModel.FK_PersonRelationShips_PersonId">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="PersonRelationships" EntitySet="PersonRelationships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonRelationShips_RelatedPersonId" Association="BAPSLansdaleModel.FK_PersonRelationShips_RelatedPersonId">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="PersonRelationships" EntitySet="PersonRelationships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonRelationShips_RelationshipTypeID" Association="BAPSLansdaleModel.FK_PersonRelationShips_RelationshipTypeID">
+            <End Role="RelationshipTypes" EntitySet="RelationshipTypes" />
+            <End Role="PersonRelationships" EntitySet="PersonRelationships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zonecities_zones" Association="BAPSLansdaleModel.FK_zonecities_zones">
+            <End Role="Zones" EntitySet="Zones" />
+            <End Role="ZoneCities" EntitySet="ZoneCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZoneKaryakar_zones" Association="BAPSLansdaleModel.FK_ZoneKaryakar_zones">
+            <End Role="Zones" EntitySet="Zones" />
+            <End Role="ZoneKaryakar" EntitySet="ZoneKaryakars" />
+          </AssociationSet>
+          <EntitySet Name="Roles" EntityType="BAPSLansdaleModel.Role" />
+          <AssociationSet Name="FK_Users_RoleId" Association="BAPSLansdaleModel.FK_Users_RoleId">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StreetNo" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="Address1" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ApartmentNo" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="State" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Zip" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="CityName" Relationship="BAPSLansdaleModel.FK_Addresses_CityId" FromRole="Addresses" ToRole="CityNames" />
+          <NavigationProperty Name="Persons" Relationship="BAPSLansdaleModel.FK_Persons_AddressID" FromRole="Addresses" ToRole="Persons" />
+          <NavigationProperty Name="ZoneKaryakars" Relationship="BAPSLansdaleModel.FK_ZoneKaryakar_AddressID" FromRole="Addresses" ToRole="ZoneKaryakar" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Persons" Relationship="BAPSLansdaleModel.FK_Persons_CategoryId" FromRole="Categories" ToRole="Persons" />
+        </EntityType>
+        <EntityType Name="CityName">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="CityName1" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Addresses" Relationship="BAPSLansdaleModel.FK_Addresses_CityId" FromRole="CityNames" ToRole="Addresses" />
+          <NavigationProperty Name="ZoneCities" Relationship="BAPSLansdaleModel.FK_zonecities_CityNames" FromRole="CityNames" ToRole="ZoneCities" />
+        </EntityType>
+        <EntityType Name="EventFlag">
+          <Key>
+            <PropertyRef Name="EventFlagID" />
+          </Key>
+          <Property Name="EventFlagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlagName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PersonEventFlags" Relationship="BAPSLansdaleModel.FK_PersonEventFlags_EventFlagId" FromRole="EventFlags" ToRole="PersonEventFlags" />
+        </EntityType>
+        <EntityType Name="PersonEventFlag">
+          <Key>
+            <PropertyRef Name="PersonEventFlagID" />
+          </Key>
+          <Property Name="PersonEventFlagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="EventFlagID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EventFlag" Relationship="BAPSLansdaleModel.FK_PersonEventFlags_EventFlagId" FromRole="PersonEventFlags" ToRole="EventFlags" />
+          <NavigationProperty Name="Person" Relationship="BAPSLansdaleModel.FK_PersonEventFlags_PersonId" FromRole="PersonEventFlags" ToRole="Persons" />
+        </EntityType>
+        <EntityType Name="PersonRelationship">
+          <Key>
+            <PropertyRef Name="PersonID" />
+            <PropertyRef Name="RelatedPersonID" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RelatedPersonID" Type="Int32" Nullable="false" />
+          <Property Name="RelationshipTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="BAPSLansdaleModel.FK_PersonRelationShips_PersonId" FromRole="PersonRelationships" ToRole="Persons" />
+          <NavigationProperty Name="Person1" Relationship="BAPSLansdaleModel.FK_PersonRelationShips_RelatedPersonId" FromRole="PersonRelationships" ToRole="Persons" />
+          <NavigationProperty Name="RelationshipType" Relationship="BAPSLansdaleModel.FK_PersonRelationShips_RelationshipTypeID" FromRole="PersonRelationships" ToRole="RelationshipTypes" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="IsBadAddress" Type="Boolean" />
+          <Property Name="DateOfBirth" Type="DateTime" />
+          <Property Name="Gender" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+          <Property Name="IsKarykar" Type="Boolean" />
+          <Property Name="AddressId" Type="Int32" Nullable="false" />
+          <Property Name="HomePhone" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="CellPhone" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Native" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="EntryDate" Type="DateTime" />
+          <Property Name="ModifyDate" Type="DateTime" />
+          <Property Name="KarykarId" Type="Int32" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="OldPhoneNo" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="ConsiderForSampark" Type="Boolean" Nullable="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Address" Relationship="BAPSLansdaleModel.FK_Persons_AddressID" FromRole="Persons" ToRole="Addresses" />
+          <NavigationProperty Name="Category" Relationship="BAPSLansdaleModel.FK_Persons_CategoryId" FromRole="Persons" ToRole="Categories" />
+          <NavigationProperty Name="PersonEventFlags" Relationship="BAPSLansdaleModel.FK_PersonEventFlags_PersonId" FromRole="Persons" ToRole="PersonEventFlags" />
+          <NavigationProperty Name="PersonRelationships" Relationship="BAPSLansdaleModel.FK_PersonRelationShips_PersonId" FromRole="Persons" ToRole="PersonRelationships" />
+          <NavigationProperty Name="PersonRelationships1" Relationship="BAPSLansdaleModel.FK_PersonRelationShips_RelatedPersonId" FromRole="Persons" ToRole="PersonRelationships" />
+        </EntityType>
+        <EntityType Name="RelationshipType">
+          <Key>
+            <PropertyRef Name="RelationshipTypeID" />
+          </Key>
+          <Property Name="RelationshipTypeID" Type="Int32" Nullable="false" />
+          <Property Name="RelationshipType1" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PersonRelationships" Relationship="BAPSLansdaleModel.FK_PersonRelationShips_RelationshipTypeID" FromRole="RelationshipTypes" ToRole="PersonRelationships" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="LastLogin" Type="DateTime" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PasswordSalt" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Type="Int32" Name="RoleID" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="BAPSLansdaleModel.FK_Users_RoleId" FromRole="User" ToRole="Role" />
+          <Property Type="Boolean" Name="NeedsPasswordChange" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZoneCity">
+          <Key>
+            <PropertyRef Name="ZoneCityId" />
+          </Key>
+          <Property Name="ZoneCityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ZoneId" Type="Int32" />
+          <Property Name="CityName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CityId" Type="Int32" />
+          <NavigationProperty Name="CityName1" Relationship="BAPSLansdaleModel.FK_zonecities_CityNames" FromRole="ZoneCities" ToRole="CityNames" />
+          <NavigationProperty Name="Zone" Relationship="BAPSLansdaleModel.FK_zonecities_zones" FromRole="ZoneCities" ToRole="Zones" />
+        </EntityType>
+        <EntityType Name="ZoneKaryakar">
+          <Key>
+            <PropertyRef Name="ZoneKarykarId" />
+          </Key>
+          <Property Name="ZoneKarykarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ZoneId" Type="Int32" />
+          <Property Name="AddressId" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="6000" Unicode="false" FixedLength="false" />
+          <Property Name="Note1" Type="String" MaxLength="6000" Unicode="false" FixedLength="false" />
+          <Property Name="Note2" Type="String" MaxLength="6000" Unicode="false" FixedLength="false" />
+          <Property Name="Note3" Type="String" MaxLength="6000" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Address" Relationship="BAPSLansdaleModel.FK_ZoneKaryakar_AddressID" FromRole="ZoneKaryakar" ToRole="Addresses" />
+          <NavigationProperty Name="Zone" Relationship="BAPSLansdaleModel.FK_ZoneKaryakar_zones" FromRole="ZoneKaryakar" ToRole="Zones" />
+        </EntityType>
+        <EntityType Name="Zone">
+          <Key>
+            <PropertyRef Name="ZoneId" />
+          </Key>
+          <Property Name="ZoneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ZoneName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ZoneLeadId" Type="Int32" />
+          <NavigationProperty Name="ZoneCities" Relationship="BAPSLansdaleModel.FK_zonecities_zones" FromRole="Zones" ToRole="ZoneCities" />
+          <NavigationProperty Name="ZoneKaryakars" Relationship="BAPSLansdaleModel.FK_ZoneKaryakar_zones" FromRole="Zones" ToRole="ZoneKaryakar" />
+        </EntityType>
+        <Association Name="FK_Addresses_CityId">
+          <End Role="CityNames" Type="BAPSLansdaleModel.CityName" Multiplicity="0..1" />
+          <End Role="Addresses" Type="BAPSLansdaleModel.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityNames">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_AddressID">
+          <End Role="Addresses" Type="BAPSLansdaleModel.Address" Multiplicity="1" />
+          <End Role="Persons" Type="BAPSLansdaleModel.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZoneKaryakar_AddressID">
+          <End Role="Addresses" Type="BAPSLansdaleModel.Address" Multiplicity="0..1" />
+          <End Role="ZoneKaryakar" Type="BAPSLansdaleModel.ZoneKaryakar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="ZoneKaryakar">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_CategoryId">
+          <End Role="Categories" Type="BAPSLansdaleModel.Category" Multiplicity="0..1" />
+          <End Role="Persons" Type="BAPSLansdaleModel.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zonecities_CityNames">
+          <End Role="CityNames" Type="BAPSLansdaleModel.CityName" Multiplicity="0..1" />
+          <End Role="ZoneCities" Type="BAPSLansdaleModel.ZoneCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityNames">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="ZoneCities">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonEventFlags_EventFlagId">
+          <End Role="EventFlags" Type="BAPSLansdaleModel.EventFlag" Multiplicity="1" />
+          <End Role="PersonEventFlags" Type="BAPSLansdaleModel.PersonEventFlag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventFlags">
+              <PropertyRef Name="EventFlagID" />
+            </Principal>
+            <Dependent Role="PersonEventFlags">
+              <PropertyRef Name="EventFlagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonEventFlags_PersonId">
+          <End Role="Persons" Type="BAPSLansdaleModel.Person" Multiplicity="1" />
+          <End Role="PersonEventFlags" Type="BAPSLansdaleModel.PersonEventFlag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonEventFlags">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonRelationShips_PersonId">
+          <End Role="Persons" Type="BAPSLansdaleModel.Person" Multiplicity="1" />
+          <End Role="PersonRelationships" Type="BAPSLansdaleModel.PersonRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonRelationships">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonRelationShips_RelatedPersonId">
+          <End Role="Persons" Type="BAPSLansdaleModel.Person" Multiplicity="1" />
+          <End Role="PersonRelationships" Type="BAPSLansdaleModel.PersonRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonRelationships">
+              <PropertyRef Name="RelatedPersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonRelationShips_RelationshipTypeID">
+          <End Role="RelationshipTypes" Type="BAPSLansdaleModel.RelationshipType" Multiplicity="1" />
+          <End Role="PersonRelationships" Type="BAPSLansdaleModel.PersonRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipTypes">
+              <PropertyRef Name="RelationshipTypeID" />
+            </Principal>
+            <Dependent Role="PersonRelationships">
+              <PropertyRef Name="RelationshipTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zonecities_zones">
+          <End Role="Zones" Type="BAPSLansdaleModel.Zone" Multiplicity="0..1" />
+          <End Role="ZoneCities" Type="BAPSLansdaleModel.ZoneCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zones">
+              <PropertyRef Name="ZoneId" />
+            </Principal>
+            <Dependent Role="ZoneCities">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZoneKaryakar_zones">
+          <End Role="Zones" Type="BAPSLansdaleModel.Zone" Multiplicity="0..1" />
+          <End Role="ZoneKaryakar" Type="BAPSLansdaleModel.ZoneKaryakar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zones">
+              <PropertyRef Name="ZoneId" />
+            </Principal>
+            <Dependent Role="ZoneKaryakar">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Type="Int32" Name="RoleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="BAPSLansdaleModel.FK_Users_RoleId" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Users_RoleId">
+          <End Type="BAPSLansdaleModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="BAPSLansdaleModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BAPSLansdaleModelStoreContainer" CdmEntityContainer="BAPSLansdaleEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="BAPSLansdaleModel.Address">
+              <MappingFragment StoreEntitySet="Addresses">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="StreetNo" ColumnName="StreetNo" />
+                <ScalarProperty Name="Address1" ColumnName="Address" />
+                <ScalarProperty Name="ApartmentNo" ColumnName="ApartmentNo" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="BAPSLansdaleModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityNames">
+            <EntityTypeMapping TypeName="BAPSLansdaleModel.CityName">
+              <MappingFragment StoreEntitySet="CityNames">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName1" ColumnName="CityName" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventFlags">
+            <EntityTypeMapping TypeName="BAPSLansdaleModel.EventFlag">
+              <MappingFragment StoreEntitySet="EventFlags">
+                <ScalarProperty Name="EventFlagID" ColumnName="EventFlagID" />
+                <ScalarProperty Name="FlagName" ColumnName="FlagName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonEventFlags">
+            <EntityTypeMapping TypeName="BAPSLansdaleModel.PersonEventFlag">
+              <MappingFragment StoreEntitySet="PersonEventFlags">
+                <ScalarProperty Name="PersonEventFlagID" ColumnName="PersonEventFlagID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="EventFlagID" ColumnName="EventFlagID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonRelationships">
+            <EntityTypeMapping TypeName="BAPSLansdaleModel.PersonRelationship">
+              <MappingFragment StoreEntitySet="PersonRelationships">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="RelatedPersonID" ColumnName="RelatedPersonID" />
+                <ScalarProperty Name="RelationshipTypeID" ColumnName="RelationshipTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persons">
+            <EntityTypeMapping TypeName="BAPSLansdaleModel.Person">
+              <MappingFragment StoreEntitySet="Persons">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="IsBadAddress" ColumnName="IsBadAddress" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="IsKarykar" ColumnName="IsKarykar" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Native" ColumnName="Native" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="KarykarId" ColumnName="KarykarId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="OldPhoneNo" ColumnName="OldPhoneNo" />
+                <ScalarProperty Name="ConsiderForSampark" ColumnName="ConsiderForSampark" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelationshipTypes">
+            <EntityTypeMapping TypeName="BAPSLansdaleModel.RelationshipType">
+              <MappingFragment StoreEntitySet="RelationshipTypes">
+                <ScalarProperty Name="RelationshipTypeID" ColumnName="RelationshipTypeID" />
+                <ScalarProperty Name="RelationshipType1" ColumnName="RelationshipType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BAPSLansdaleModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="NeedsPasswordChange" ColumnName="NeedsPasswordChange" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZoneCities">
+            <EntityTypeMapping TypeName="BAPSLansdaleModel.ZoneCity">
+              <MappingFragment StoreEntitySet="ZoneCities">
+                <ScalarProperty Name="ZoneCityId" ColumnName="ZoneCityId" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZoneKaryakars">
+            <EntityTypeMapping TypeName="BAPSLansdaleModel.ZoneKaryakar">
+              <MappingFragment StoreEntitySet="ZoneKaryakar">
+                <ScalarProperty Name="ZoneKarykarId" ColumnName="ZoneKarykarId" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Note1" ColumnName="Note1" />
+                <ScalarProperty Name="Note2" ColumnName="Note2" />
+                <ScalarProperty Name="Note3" ColumnName="Note3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zones">
+            <EntityTypeMapping TypeName="BAPSLansdaleModel.Zone">
+              <MappingFragment StoreEntitySet="Zones">
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="ZoneLeadId" ColumnName="ZoneLeadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="BAPSLansdaleModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="AddressManagerModel">
+        <EntityTypeShape EntityType="BAPSLansdaleModel.Address" Width="1.5" PointX="3" PointY="5.75" Height="2.5783902994791674" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAPSLansdaleModel.Category" Width="1.5" PointX="3" PointY="8.5" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAPSLansdaleModel.CityName" Width="1.5" PointX="0.75" PointY="6.125" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAPSLansdaleModel.EventFlag" Width="1.5" PointX="9.875" PointY="4.375" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAPSLansdaleModel.PersonEventFlag" Width="1.625" PointX="7.5" PointY="4.375" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAPSLansdaleModel.PersonRelationship" Width="1.875" PointX="7.5" PointY="6.625" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAPSLansdaleModel.Person" Width="1.5" PointX="5.25" PointY="3.25" Height="5.372294921874996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAPSLansdaleModel.RelationshipType" Width="1.875" PointX="9.875" PointY="6.625" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAPSLansdaleModel.User" Width="1.5" PointX="7.5" PointY="1.25" Height="2.41404296875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAPSLansdaleModel.ZoneCity" Width="1.5" PointX="2.875" PointY="1.25" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAPSLansdaleModel.ZoneKaryakar" Width="1.5" PointX="0.75" PointY="3.5" Height="2.4140429687500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAPSLansdaleModel.Zone" Width="1.5" PointX="0.75" PointY="1.25" Height="1.7566536458333317" IsExpanded="true" />
+        <AssociationConnector Association="BAPSLansdaleModel.FK_Addresses_CityId" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.0033268229166659" />
+          <ConnectorPoint PointX="3" PointY="7.0033268229166659" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAPSLansdaleModel.FK_Persons_AddressID" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="7.0391951497395837" />
+          <ConnectorPoint PointX="5.25" PointY="7.0391951497395837" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAPSLansdaleModel.FK_ZoneKaryakar_AddressID" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="5.75" />
+          <ConnectorPoint PointX="3.75" PointY="4.6249994999999995" />
+          <ConnectorPoint PointX="3.3958338333333336" PointY="4.6249994999999986" />
+          <ConnectorPoint PointX="3.2291671666666666" PointY="4.6249994999999995" />
+          <ConnectorPoint PointX="2.25" PointY="4.6249994999999995" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAPSLansdaleModel.FK_Persons_CategoryId" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="9.2751274531249983" />
+          <ConnectorPoint PointX="6" PointY="9.2751274531249983" />
+          <ConnectorPoint PointX="6" PointY="8.622294921874996" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAPSLansdaleModel.FK_zonecities_CityNames" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.0033268229166659" />
+          <ConnectorPoint PointX="2.75" PointY="7.0033268229166659" />
+          <ConnectorPoint PointX="2.75" PointY="5.5" />
+          <ConnectorPoint PointX="3.3125005" PointY="5.5" />
+          <ConnectorPoint PointX="3.3125005" PointY="3.1710009765624996" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAPSLansdaleModel.FK_PersonEventFlags_EventFlagId" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.875" PointY="5.0889794921875" />
+          <ConnectorPoint PointX="9.125" PointY="5.0889794921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAPSLansdaleModel.FK_PersonEventFlags_PersonId" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="5.2533268229166659" />
+          <ConnectorPoint PointX="7.5" PointY="5.2533268229166659" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAPSLansdaleModel.FK_PersonRelationShips_PersonId" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="7.58550048828125" />
+          <ConnectorPoint PointX="7.5" PointY="7.58550048828125" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAPSLansdaleModel.FK_PersonRelationShips_RelatedPersonId" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="7.0427502441406249" />
+          <ConnectorPoint PointX="7.5" PointY="7.0427502441406249" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAPSLansdaleModel.FK_PersonRelationShips_RelationshipTypeID" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.875" PointY="7.3389794921875" />
+          <ConnectorPoint PointX="9.375" PointY="7.3389794921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAPSLansdaleModel.FK_zonecities_zones" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.1283268229166659" />
+          <ConnectorPoint PointX="2.875" PointY="2.1283268229166659" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAPSLansdaleModel.FK_ZoneKaryakar_zones" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="3.0066536458333317" />
+          <ConnectorPoint PointX="1.5" PointY="3.5" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BAPSLansdaleModel.Role" Width="1.5" PointX="5.25" PointY="1.25" Height="1.5923063151041674" />
+        <AssociationConnector Association="BAPSLansdaleModel.FK_Users_RoleId" >
+          <ConnectorPoint PointX="6.75" PointY="2.0461531575520837" />
+          <ConnectorPoint PointX="7.5" PointY="2.0461531575520837" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

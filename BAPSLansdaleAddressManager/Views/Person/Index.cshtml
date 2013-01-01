@@ -1,0 +1,133 @@
+﻿@model IEnumerable<BAPSLansdaleAddressManager.Models.Person>
+
+@{
+    ViewBag.Title = "IndexPerson";
+}
+
+<h2>Guests</h2>
+
+<p>
+    @Html.ActionLink("Search", "SearchIndex", "Person")
+    @Html.ActionLink("Add New", "Create", "Person")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Id
+        </th>
+        <th>
+            First
+        </th>
+        <th>
+            Middle
+        </th>
+        <th>
+            Last
+        </th>
+        <th>
+            StreetNo
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            State
+        </th>
+        <th>
+            Zip
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Bad Address
+        </th>
+        <th>
+            Birth Date
+        </th>
+        <th>
+            Gender
+        </th>
+        <th>
+            Home Phone
+        </th>
+        <th>
+            Cell
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Native
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Person", new { id=item.PersonID }, null) |
+            @Html.ActionLink("Details", "Details", "Person", new { id=item.PersonID }, null) |
+            @if (Request.IsAuthenticated && User.IsInRole("Administrators"))
+            {
+                @Html.ActionLink("Delete", "Delete", "Person", new {id = item.PersonID}, null)
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.StreetNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.Address1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.CityName.CityName1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.Zip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsBadAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomePhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CellPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Native)
+        </td>
+    </tr>
+}
+
+</table>

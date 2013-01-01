@@ -1,0 +1,68 @@
+- Create, Details & Edit View
+- Make "Add User" the Admin page.
+	- On Admin page put links for Add User, Remove User, Zone cities mapping, Reporting, Mailings (for Devarshibhai)
+- Add Role for Reporting, Mailings (for Devarshibhai).
+
+- Integrate with Microsoft Mappoint if it has API
+- Reporting...
+	- Filter by Zone
+	- Filter by Zone & flags
+	- Filter by Zone & Karyakar (Category drop down)
+	- Filter by Zone & person type (bal, balika, yuvak)
+- Mahendra uncle said add field for "Profession" to Person table.
+- Shailesh - Make AddressID of Mandir + Sequence No.
+	- This is not possible as we are using ORM - Entity Framework.
+	- Better way would be to add a field for Mandir location to the Person table.
+
+
+
+Guest Details
+-------------
+FirstName, MiddleName, LastName, Gender, DOB, 
+
+Contact Details
+---------------
+StreetNo, StreetName, City, State, Zip, 
+HomePhone, CellPhone, Email, IsBadAddress,
+
+Other Details
+-------------
+Category, Active
+Type, ConsiderForSampark,
+
+Native, Notes
+
+- Learn MVC in 7 days Tutorial
+
+http://www.codeproject.com/Articles/375182/Learn-MVC-Model-View-Controller-Step-by-Step-in-7
+
+
+- Code to add "Loading, please wait..." message upon posting form in MVC Razor
+
+http://www.codeproject.com/Articles/424745/MVC-Razor-In-Progress-Icon
+
+
+- Razor Tutorials
+
+http://blog.michaelckennedy.net/2012/01/20/building-asp-net-mvc-forms-with-razor/
+
+- MVC RAzor nested fieldsets
+
+http://stackoverflow.com/questions/11652778/twitter-bootstrap-nested-fieldsets
+
+
+- Adding Search filters on MVC page
+
+http://www.asp.net/mvc/tutorials/getting-started-with-aspnet-mvc3/cs/examining-the-edit-methods-and-edit-view
+
+http://www.codeproject.com/Articles/344292/ASP-NET-MVC3-Razor-With-jQuery-For-Beginners#Index
+
+- JQuery for begginers on CodePlex
+
+http://www.codeproject.com/Articles/246701/JQuery-for-Beginners
+
+
+- Enhancing HTML tables (@Html in MVC Razor Views) using the jQuery DataTables plug-in
+
+http://www.codeproject.com/Articles/194916/Enhancing-HTML-tables-using-a-JQuery-DataTables-pl
+

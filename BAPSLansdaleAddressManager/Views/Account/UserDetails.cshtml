@@ -1,0 +1,50 @@
+﻿@model BAPSLansdaleAddressManager.Models.User
+
+@{
+    ViewBag.Title = "UserDetails";
+}
+
+<h2>UserDetails</h2>
+
+<fieldset>
+    <legend>User</legend>
+    
+    @Html.HiddenFor(model => model.UserId)
+    @Html.HiddenFor(model => model.RoleID)
+    @Html.HiddenFor(model => model.Password)
+    @Html.HiddenFor(model => model.PasswordSalt)
+
+    <div class="display-label">UserName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">Role</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Role.Name)
+    </div>
+
+    <div class="display-label">NeedsPasswordChange</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NeedsPasswordChange)
+    </div>
+    
+    <div class="display-label">LastLogin</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastLogin)
+    </div>
+
+    <div class="display-label">Active</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Active)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "EditUser", new { id=Model.UserId }) |
+    @Html.ActionLink("Back to List", "Users")
+</p>
