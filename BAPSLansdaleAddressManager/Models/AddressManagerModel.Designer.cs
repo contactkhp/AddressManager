@@ -8,13 +8,12 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.Data.EntityClient;
+using System.ComponentModel;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -292,7 +291,6 @@ namespace BAPSLansdaleAddressManager.Models
         private ObjectSet<Role> _Roles;
 
         #endregion
-
         #region AddTo Methods
     
         /// <summary>
@@ -400,11 +398,11 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
+    
 
     #endregion
-
+    
     #region Entities
     
     /// <summary>
@@ -429,7 +427,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -604,7 +601,6 @@ namespace BAPSLansdaleAddressManager.Models
         partial void OnZipChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -691,7 +687,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -716,7 +711,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -771,7 +765,6 @@ namespace BAPSLansdaleAddressManager.Models
         partial void OnCategoryNameChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -798,7 +791,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -827,7 +819,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -906,7 +897,6 @@ namespace BAPSLansdaleAddressManager.Models
         partial void OnStateChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -955,7 +945,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -973,16 +962,17 @@ namespace BAPSLansdaleAddressManager.Models
         /// </summary>
         /// <param name="eventFlagID">Initial value of the EventFlagID property.</param>
         /// <param name="flagName">Initial value of the FlagName property.</param>
-        public static EventFlag CreateEventFlag(global::System.Int32 eventFlagID, global::System.String flagName)
+        /// <param name="flagYear">Initial value of the FlagYear property.</param>
+        public static EventFlag CreateEventFlag(global::System.Int32 eventFlagID, global::System.String flagName, global::System.Int32 flagYear)
         {
             EventFlag eventFlag = new EventFlag();
             eventFlag.EventFlagID = eventFlagID;
             eventFlag.FlagName = flagName;
+            eventFlag.FlagYear = flagYear;
             return eventFlag;
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1035,9 +1025,32 @@ namespace BAPSLansdaleAddressManager.Models
         private global::System.String _FlagName;
         partial void OnFlagNameChanging(global::System.String value);
         partial void OnFlagNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FlagYear
+        {
+            get
+            {
+                return _FlagYear;
+            }
+            set
+            {
+                OnFlagYearChanging(value);
+                ReportPropertyChanging("FlagYear");
+                _FlagYear = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FlagYear");
+                OnFlagYearChanged();
+            }
+        }
+        private global::System.Int32 _FlagYear;
+        partial void OnFlagYearChanging(global::System.Int32 value);
+        partial void OnFlagYearChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1064,7 +1077,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1095,7 +1107,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1630,7 +1641,6 @@ namespace BAPSLansdaleAddressManager.Models
         partial void OnNotesChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1777,7 +1787,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1806,7 +1815,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1885,7 +1893,6 @@ namespace BAPSLansdaleAddressManager.Models
         partial void OnEventFlagIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1966,7 +1973,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1995,7 +2001,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2077,7 +2082,6 @@ namespace BAPSLansdaleAddressManager.Models
         partial void OnRelationshipTypeIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2196,7 +2200,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2221,7 +2224,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2276,7 +2278,6 @@ namespace BAPSLansdaleAddressManager.Models
         partial void OnRelationshipType1Changed();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2303,7 +2304,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2330,7 +2330,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2409,7 +2408,6 @@ namespace BAPSLansdaleAddressManager.Models
         partial void OnDescriptionChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2436,7 +2434,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2475,7 +2472,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2698,7 +2694,6 @@ namespace BAPSLansdaleAddressManager.Models
         partial void OnNeedsPasswordChangeChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2741,7 +2736,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2768,7 +2762,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2847,7 +2840,6 @@ namespace BAPSLansdaleAddressManager.Models
         partial void OnZoneLeadIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2896,7 +2888,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2921,7 +2912,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -3024,7 +3014,6 @@ namespace BAPSLansdaleAddressManager.Models
         partial void OnCityIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -3105,7 +3094,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3130,7 +3118,6 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -3305,7 +3292,6 @@ namespace BAPSLansdaleAddressManager.Models
         partial void OnNote3Changed();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -3386,10 +3372,8 @@ namespace BAPSLansdaleAddressManager.Models
         }
 
         #endregion
-
     }
 
     #endregion
-
     
 }

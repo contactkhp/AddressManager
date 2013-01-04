@@ -105,6 +105,7 @@
           </Key>
           <Property Name="EventFlagID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FlagName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="FlagYear" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PersonEventFlags">
           <Key>
@@ -475,6 +476,7 @@
           <Property Name="EventFlagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FlagName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="PersonEventFlags" Relationship="BAPSLansdaleModel.FK_PersonEventFlags_EventFlagId" FromRole="EventFlags" ToRole="PersonEventFlags" />
+          <Property Type="Int32" Name="FlagYear" Nullable="false" />
         </EntityType>
         <EntityType Name="PersonEventFlag">
           <Key>
@@ -792,6 +794,7 @@
           <EntitySetMapping Name="EventFlags">
             <EntityTypeMapping TypeName="BAPSLansdaleModel.EventFlag">
               <MappingFragment StoreEntitySet="EventFlags">
+                <ScalarProperty Name="FlagYear" ColumnName="FlagYear" />
                 <ScalarProperty Name="EventFlagID" ColumnName="EventFlagID" />
                 <ScalarProperty Name="FlagName" ColumnName="FlagName" />
               </MappingFragment>

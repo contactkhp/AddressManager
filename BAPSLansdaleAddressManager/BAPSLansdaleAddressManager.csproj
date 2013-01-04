@@ -87,12 +87,16 @@
     <Compile Include="Models\CategoryService.cs" />
     <Compile Include="Models\CityNameRepository.cs" />
     <Compile Include="Models\CityNameService.cs" />
+    <Compile Include="Models\EventFlagRepository.cs" />
+    <Compile Include="Models\EventFlagService.cs" />
     <Compile Include="Models\IAddressRepository.cs" />
     <Compile Include="Models\IAddressService.cs" />
     <Compile Include="Models\ICategoryRepository.cs" />
     <Compile Include="Models\ICategoryService.cs" />
     <Compile Include="Models\ICityNameRepository.cs" />
     <Compile Include="Models\ICityNameService.cs" />
+    <Compile Include="Models\IEventFlagRepository.cs" />
+    <Compile Include="Models\IEventFlagService.cs" />
     <Compile Include="Models\IPersonRepository.cs" />
     <Compile Include="Models\IPersonService.cs" />
     <Compile Include="Models\IRoleRepository.cs" />
@@ -236,6 +240,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\UserDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\EventFlags.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\EditEventFlag.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\EventFlagDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\DeleteEventFlag.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

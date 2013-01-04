@@ -1,0 +1,25 @@
+﻿@model BAPSLansdaleAddressManager.Models.EventFlag
+
+@{
+    ViewBag.Title = "EventFlagDetails";
+}
+
+<h2>Event Flag Details</h2>
+
+<fieldset>
+    <legend>Event Flag</legend>
+
+    <div class="display-label">Flag Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlagName)
+    </div>
+
+    <div class="display-label">Flag Year</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlagYear)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "EditEventFlag", new { id=Model.EventFlagID }) |
+    @Html.ActionLink("Back to EventFlags", "EventFlags")
+</p>

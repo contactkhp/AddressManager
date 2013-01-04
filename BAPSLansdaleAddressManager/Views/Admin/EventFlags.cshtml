@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BAPSLansdaleAddressManager.Models.EventFlag>
+
+@{
+    ViewBag.Title = "EventFlags";
+}
+
+<h2>Event Flags</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            Year
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "EditEventFlag", new { id=item.EventFlagID }) |
+            @Html.ActionLink("Details", "EventFlagDetails", new { id=item.EventFlagID }) |
+            @Html.ActionLink("Delete", "DeleteEventFlag", new { id=item.EventFlagID })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlagName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlagYear)
+        </td>
+    </tr>
+}
+
+</table>

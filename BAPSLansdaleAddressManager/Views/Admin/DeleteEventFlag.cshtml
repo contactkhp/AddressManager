@@ -1,0 +1,28 @@
+﻿@model BAPSLansdaleAddressManager.Models.EventFlag
+
+@{
+    ViewBag.Title = "DeleteEventFlag";
+}
+
+<h2>Delete Event Flag</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Event Flag</legend>
+
+    <div class="display-label">Flag Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlagName)
+    </div>
+
+    <div class="display-label">Flag Year</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlagYear)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to EventFlags", "EventFlags")
+    </p>
+}
